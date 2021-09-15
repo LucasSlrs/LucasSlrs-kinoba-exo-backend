@@ -10,13 +10,12 @@ app.use(express.json());
 //routes//
 
 //create a user
-
 app.post("/user", async (req, res) => {
   try {
-    const { phone_number } = req.body;
+    const { phone_number, first_name, last_name, password } = req.body;
     const newUser = await pool.query(
-      "INSERT INTO users (phone_number) VALUES($1) RETURNING *",
-      [phone_number]
+      "INSERT INTO users (phone_number, first_name, last_name, password) VALUES($1, $2, $3, $4)RETURNING *",
+      [phone_number, first_name, last_name, password]
     );
     res.json(newUser.rows[0]);
   } catch (err) {
