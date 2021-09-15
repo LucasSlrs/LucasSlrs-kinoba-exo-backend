@@ -2,26 +2,22 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
+const bcrypt = require("bcrypt");
+
+const salt = 10;
 
 //Middleware//
 app.use(cors());
 app.use(express.json());
 
-//routes//
+//Midldeware that handles a ressource that wasn't found
 
-//create a user
-app.post("/user", async (req, res) => {
-  try {
-    const { phone_number, first_name, last_name, password } = req.body;
-    const newUser = await pool.query(
-      "INSERT INTO users (phone_number, first_name, last_name, password) VALUES($1, $2, $3, $4)RETURNING *",
-      [phone_number, first_name, last_name, password]
-    );
-    res.json(newUser.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
+//routes//
+let authRouter = require("./routes/auth");
+app.use("/user/auth", authRouter);
+
+// let usersRouter = require("./routes/users");
+// app.use("/users", usersRouter);
 
 //get all users
 

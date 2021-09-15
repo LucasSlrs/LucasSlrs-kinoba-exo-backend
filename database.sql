@@ -5,5 +5,5 @@ CREATE TABLE users(
     phone_number VARCHAR(25),
     first_name VARCHAR(50),
     last_name VARCHAR(50),
-    password VARCHAR(50)
+    password VARCHAR(500)
 );
