@@ -2,22 +2,55 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
-const bcrypt = require("bcrypt");
+const session = require("express-session");
+const flash = require("express-flash");
+const passport = require("passport");
 
-const salt = 10;
+const initializePassport = require("./passportConfig");
+
+initializePassport(passport);
 
 //Middleware//
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true, //Allow client to send cookies.
+  })
+);
+
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(flash());
 app.use(express.json());
 
 //Midldeware that handles a ressource that wasn't found
 
 //routes//
 let authRouter = require("./routes/auth");
+const initialize = require("./passportConfig");
 app.use("/user/auth", authRouter);
 
 // let usersRouter = require("./routes/users");
 // app.use("/users", usersRouter);
+
+// login
+
+app.post(
+  "user/auth/login",
+  passport.authenticate("local", {
+    successRedirect: "/user/dashboard",
+    failureRedirect: "/user/auth/login",
+    failureFlash: true,
+  })
+);
 
 //get all users
 
