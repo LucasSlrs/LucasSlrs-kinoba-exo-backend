@@ -1,0 +1,44 @@
+[
+    {
+        "phone_number": "0618727372",
+        "first_name": "Lucas",
+        "last_name": "Souleyrasse",
+        "password": "password",
+        "profile_picture": "https://randomuser.me/api/portraits/men/17.jpg"
+    },
+    {
+        "phone_number": "0123456789",
+        "first_name": "Avery",
+        "last_name": "Stewart",
+        "password": "password",
+        "profile_picture": "https://randomuser.me/api/portraits/women/4.jpg"
+    },
+    {
+        "phone_number": "0555555555",
+        "first_name": "Katie",
+        "last_name": "Peterson",
+        "password": "password",
+        "profile_picture": "https://randomuser.me/api/portraits/women/2.jpg"
+    },
+    {
+        "phone_number": "0202020202",
+        "first_name": "Bryan",
+        "last_name": "Wallace",
+        "password": "password",
+        "profile_picture": "https://randomuser.me/api/portraits/thumb/lego/1.jpg"
+    },
+    {
+        "phone_number": "0101010101",
+        "first_name": "Ethan",
+        "last_name": "Gonzalez",
+        "password": "password",
+        "profile_picture": "https://randomuser.me/api/portraits/thumb/men/1.jpg"
+    },
+    {
+        "phone_number": "0666666666",
+        "first_name": "Ray",
+        "last_name": "Edwards",
+        "password": "password",
+        "profile_picture": "https://randomuser.me/api/portraits/thumb/men/12.jpg"
+    }
+]
