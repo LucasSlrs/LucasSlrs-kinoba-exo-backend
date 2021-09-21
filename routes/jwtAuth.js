@@ -74,5 +74,39 @@ router.get("/is-verify", authorization, async (req, res) => {
     res.status(500).send("Server error");
   }
 });
-
+//-----------------------------------------------------------
+//Not to use now but to delete useless users
+router.delete("/user/:id", async (req, res) => {
+  try {
+    const { user_id } = req.params;
+    const deleteUser = await pool.query(
+      "DELETE FROM users WHERE user_id = $1",
+      [user_id]
+    );
+    res.json("User has been deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+//-----------------------------------------------------------
+router.get("/listusers", async (req, res) => {
+  try {
+    const allUsers = await pool.query("SELECT * FROM users");
+    res.json(allUsers.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+router.get("/getuser/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userById = await pool.query(
+      "SELECT * FROM users WHERE user_id = $1",
+      [id]
+    );
+    res.json(userById.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 module.exports = router;

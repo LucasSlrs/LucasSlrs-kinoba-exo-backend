@@ -31,6 +31,9 @@ app.use("/user/auth", authRouter);
 let dashboardRouter = require("./routes/dashboard");
 app.use("/user/dashboard", dashboardRouter);
 
+let messagesRouter = require("./routes/messages");
+app.use("/user/message", messagesRouter);
+
 //update a user
 // app.put("/user/:id", async (req, res) => {
 //   try {
