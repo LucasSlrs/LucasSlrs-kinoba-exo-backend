@@ -34,5 +34,4 @@ router.get("/messagesTo/:message_from/:message_to", async (req, res) => {
     console.error(err.message);
   }
 });
-// router.get('/messagesFrom')
 module.exports = router;

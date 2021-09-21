@@ -109,4 +109,5 @@ router.get("/getuser/:id", async (req, res) => {
     console.error(err.message);
   }
 });
+
 module.exports = router;
